@@ -1,0 +1,21 @@
+import path from 'path';
+
+export default {
+    entry: [
+        'webpack/hot/dev-server',
+        'webpack-dev-server/client?http://localhost:8080',
+        path.resolve(__dirname, 'app/main.js')
+    ],
+
+    output: {
+        path: path.resolve(__dirname, 'build'),
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders: [{
+            test: /\.jsx?$/, // A regexp to test the require path. accepts either js or jsx
+            loaders: ['react-hot', 'babel?stage=0'], // The module to load. "babel" is short for "babel-loader"
+            exclude: /node_modules/
+        }]
+    }
+}
