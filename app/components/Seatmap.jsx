@@ -18,15 +18,25 @@ export default class Seatmap extends React.Component {
         };
     }
 
-    selectSeat(row, number) {
+    selectSeat = (row, number) => {
         this.setState({
             selectedSeat: this.state.selectedSeat.merge({row, number})
-        });
+        }, () => console.log(this.state.selectedSeat.toJS()));
     }
 
     render() {
+        const { selectedSeat } = this.state;
         const rows = this.props.rows.map((row, index) => {
-            return <Row seats={row} rowNumber={index} key={`Row${index}`} />;
+            const _selectedSeat = selectedSeat.toJS();
+            const props = {
+                selectedSeat: _selectedSeat,
+                seats: row,
+                isSelected: index ===  _selectedSeat.row,
+                rowNumber: index,
+                key: `Row${index}`,
+                selectSeat: this.selectSeat
+            }
+            return <Row  {...props} />;
         })
 
         return (

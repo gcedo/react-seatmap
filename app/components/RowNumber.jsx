@@ -5,11 +5,11 @@ export default class RowNumber extends React.Component {
 
     static propTypes = {
         rowNumber: T.number,
-        over: T.bool
+        bold: T.bool
     }
 
     render() {
-        const style = { fontWeight: this.props.over ? 700 : 'normal' };
+        const style = { fontWeight: this.props.bold ? 700 : 'normal' };
         return (
             <div style={style} className="RowNumber">
                 {this.props.rowNumber}

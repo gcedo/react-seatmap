@@ -5,23 +5,22 @@ import cx from 'classnames';
 export default class Seat extends React.Component {
 
     static propTypes = {
-        selected: T.bool
+        isSelected: T.bool,
+        seatNumber: T.string,
+        selectSeat: T.func
     };
 
     static defaultProps = {
-        selected: false
-    };
-
-    handleClick = () => {
+        isSelected: false
     };
 
     render() {
-        const { selected } = this.props;
+        const { isSelected } = this.props;
         const className = cx('Seat',
-            { 'Seat--selected': selected },
-            { 'Seat--enabled': !selected });
+            { 'Seat--selected': isSelected },
+            { 'Seat--enabled': !isSelected });
         return (
-            <div className={className} onClick={this.handleClick}>
+            <div className={className} onClick={this.props.selectSeat}>
                 {this.props.seatNumber}
             </div>
         );
