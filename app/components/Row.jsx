@@ -2,6 +2,7 @@ import React, { PropTypes as T } from 'react';
 import Seat from './Seat.jsx';
 import Blank from './Blank.jsx';
 import RowNumber from './RowNumber.jsx';
+import style from '../style/Row.scss';
 
 export default class Row extends React.Component {
 
@@ -11,7 +12,8 @@ export default class Row extends React.Component {
     }
 
     static propTypes = {
-        rowNumber: T.number.isRequired
+        rowNumber: T.number.isRequired,
+        seats: T.array
     }
 
     handleMouseMove = (over) => {
@@ -19,31 +21,20 @@ export default class Row extends React.Component {
     }
 
     render() {
-        const style = {
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            fontFamily: 'Product Sans',
-            marginBottom: 10
-        };
         const { over } = this.state;
-
-        if (over) style.backgroundColor = '#F5F5F5';
+        const seats = this.props.seats.map((seat, index) => {
+            if (seat === null) return <Blank key={index}/>;
+            return <Seat seatNumber={seat.number} key={index} />;
+        });
 
         return (
             <div
+                className="Row"
                 onMouseOut={this.handleMouseMove.bind(this, false)}
                 onMouseOver={this.handleMouseMove.bind(this, true)}
-                style={style}
             >
                 <RowNumber rowNumber={this.props.rowNumber} over={over} />
-                <Seat seatNumber={'A'} />
-                <Seat seatNumber={'B'} />
-                <Seat seatNumber={'C'} />
-                <Blank />
-                <Seat seatNumber={'E'} />
-                <Seat seatNumber={'F'} />
-                <Seat seatNumber={'G'} />
+                {seats}
             </div>
         );
     }

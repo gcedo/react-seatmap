@@ -1,4 +1,5 @@
 import React, { PropTypes as T } from 'react';
+import style from '../style/RowNumber.scss';
 
 export default class RowNumber extends React.Component {
 
@@ -8,13 +9,9 @@ export default class RowNumber extends React.Component {
     }
 
     render() {
+        const style = { fontWeight: this.props.over ? 700 : 'normal' };
         return (
-            <div style={{
-                width: 35,
-                textAlign: 'center',
-                color: '#9E9E9E',
-                fontWeight: this.props.over ? 700 : 'normal'
-            }}>
+            <div style={style} className="RowNumber">
                 {this.props.rowNumber}
             </div>
         );

@@ -1,0 +1,11 @@
+.Row {
+    font-family: "Product Sans";
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &:hover {
+        background-color: #F5F5F5;
+    }
+}

@@ -12,10 +12,16 @@ export default {
         filename: 'bundle.js'
     },
     module: {
-        loaders: [{
-            test: /\.jsx?$/, // A regexp to test the require path. accepts either js or jsx
-            loaders: ['react-hot', 'babel?stage=0'], // The module to load. "babel" is short for "babel-loader"
+        loaders: [
+        {
+            test: /\.jsx?$/,
+            loaders: ['react-hot', 'babel?stage=0'],
             exclude: /node_modules/
-        }]
+        },
+        {
+            test: /\.scss$/,
+            loader: 'style!css!sass'
+        }
+        ]
     }
 }
