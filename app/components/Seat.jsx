@@ -15,10 +15,10 @@ export default class Seat extends React.Component {
     };
 
     render() {
-        const { isSelected } = this.props;
+        const { isSelected, isEnabled } = this.props;
         const className = cx('Seat',
             { 'Seat--selected': isSelected },
-            { 'Seat--enabled': !isSelected }
+            { 'Seat--enabled': !isSelected && isEnabled }
         );
         return (
             <div className={className} onClick={this.props.selectSeat}>

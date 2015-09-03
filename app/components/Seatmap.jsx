@@ -24,7 +24,7 @@ export default class Seatmap extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { selectedSeats: Map() };
+        this.state = { selectedSeats: Map(), size: 0 };
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -32,18 +32,19 @@ export default class Seatmap extends React.Component {
     }
 
     selectSeat = (row, number) => {
-        const { selectedSeats } = this.state;
+        const { selectedSeats, size } = this.state;
         const { maxReservableSeats, addSeatCallback, removeSeatCallback } = this.props;
-        const size = selectedSeats.reduce((sum, row) => sum + row.size, 0);
         const seatAlreadySelected = selectedSeats.get(row, Set()).includes(number);
 
         if (size < maxReservableSeats && !seatAlreadySelected) {
             this.setState({
-                selectedSeats: selectedSeats.mergeDeep({[row]: Set([number])})
+                selectedSeats: selectedSeats.mergeDeep({[row]: Set([number])}),
+                size: size + 1
             }, () => addSeatCallback(row, number));
         } else if (selectedSeats.has(row) && seatAlreadySelected) {
             this.setState({
-                selectedSeats: selectedSeats.update(row, seats => seats.delete(number))
+                selectedSeats: selectedSeats.update(row, seats => seats.delete(number)),
+                size: size - 1
             }, () => removeSeatCallback(row, number))
         }
     }
@@ -75,12 +76,14 @@ export default class Seatmap extends React.Component {
     };
 
     renderSeats(seats, rowNumber, isRowSelected) {
-        const { selectedSeats } = this.state;
+        const { selectedSeats, size } = this.state;
+        const { maxReservableSeats } = this.props;
         return seats.map((seat, index) => {
             if (seat === null) return <Blank key={index}/>;
             const isSelected = isRowSelected && selectedSeats.get(rowNumber).includes(seat.number);
             const props = {
                 isSelected,
+                isEnabled: size < maxReservableSeats,
                 selectSeat: this.selectSeat.bind(this, rowNumber, seat.number),
                 seatNumber: seat.number,
                 key: index
