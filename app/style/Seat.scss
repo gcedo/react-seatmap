@@ -13,11 +13,10 @@
 
  .Seat--enabled {
      cursor: pointer;
-     &:hover {
-          background-color: #03A9F4;
-     }
+     &:hover { background-color: #03A9F4; }
  }
 
  .Seat--selected {
+     cursor: pointer;
      background-color: #4CAF50;
  }

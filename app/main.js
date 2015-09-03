@@ -9,7 +9,7 @@ const rows = [
 ];
 
 const rootInstance = React.render(
-    <Seatmap rows={rows} />,
+    <Seatmap rows={rows} maxReservableSeats={3} />,
     document.getElementById('app')
 );
 

@@ -15,7 +15,7 @@ export default class Row extends React.Component {
     }
 
     static propTypes = {
-        rowNumber: T.number.isRequired
+        rowNumber: T.string.isRequired
     }
 
     handleMouseMove = (over) => {

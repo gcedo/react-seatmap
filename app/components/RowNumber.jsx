@@ -4,7 +4,7 @@ import style from '../style/RowNumber.scss';
 export default class RowNumber extends React.Component {
 
     static propTypes = {
-        rowNumber: T.number,
+        rowNumber: T.string,
         bold: T.bool
     }
 
