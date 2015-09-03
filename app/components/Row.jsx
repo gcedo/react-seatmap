@@ -15,8 +15,7 @@ export default class Row extends React.Component {
     }
 
     static propTypes = {
-        rowNumber: T.number.isRequired,
-        seats: T.array
+        rowNumber: T.number.isRequired
     }
 
     handleMouseMove = (over) => {
@@ -25,22 +24,12 @@ export default class Row extends React.Component {
 
     render() {
         const { over } = this.state;
-        const { selectSeat, rowNumber, isSelected: isRowSelected, selectedSeat } = this.props;
-        const bold = over || isRowSelected;
-        const seats = this.props.seats.map((seat, index) => {
-            if (seat === null) return <Blank key={index}/>;
-            const props = {
-                selectSeat: selectSeat.bind(this, rowNumber, seat.number),
-                isSelected: isRowSelected && seat.number === selectedSeat.number,
-                seatNumber: seat.number,
-                key: index
-            };
-            return <Seat {...props} />;
-        });
+        const { rowNumber, isSelected} = this.props;
+        const bold = over || isSelected;
         const className = cx(
             'Row',
-            { 'Row--enabled': !isRowSelected },
-            { 'Row--selected': isRowSelected }
+            { 'Row--enabled': !isSelected },
+            { 'Row--selected': isSelected }
         );
         return (
             <div
@@ -49,7 +38,7 @@ export default class Row extends React.Component {
                 onMouseOver={this.handleMouseMove.bind(this, true)}
             >
                 <RowNumber rowNumber={rowNumber} bold={bold} />
-                {seats}
+                {this.props.children}
             </div>
         );
     }

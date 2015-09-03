@@ -6,8 +6,8 @@ export default class Seat extends React.Component {
 
     static propTypes = {
         isSelected: T.bool,
-        seatNumber: T.string,
-        selectSeat: T.func
+        seatNumber: T.string.isRequired,
+        selectSeat: T.func.isRequired
     };
 
     static defaultProps = {
@@ -18,7 +18,8 @@ export default class Seat extends React.Component {
         const { isSelected } = this.props;
         const className = cx('Seat',
             { 'Seat--selected': isSelected },
-            { 'Seat--enabled': !isSelected });
+            { 'Seat--enabled': !isSelected }
+        );
         return (
             <div className={className} onClick={this.props.selectSeat}>
                 {this.props.seatNumber}

@@ -1,7 +1,5 @@
 import React from 'react';
 import Seatmap from './components/Seatmap.jsx';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
 
 const rows = [
     [{ number: 'A' }, {number: 'B'}, {number: 'C'}, null, {number: 'D'}, {number: 'E'}, {number: 'F'}],
