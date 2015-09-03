@@ -83,6 +83,7 @@ export default class Seatmap extends React.Component {
             const isSelected = isRowSelected && selectedSeats.get(rowNumber).includes(seat.number);
             const props = {
                 isSelected,
+                isReserved: seat.isReserved,
                 isEnabled: size < maxReservableSeats,
                 selectSeat: this.selectSeat.bind(this, rowNumber, seat.number),
                 seatNumber: seat.number,
