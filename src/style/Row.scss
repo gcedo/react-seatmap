@@ -4,14 +4,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-
-
 }
 
 .Row--enabled {
-    &:hover {
-        background-color: #F5F5F5;
-    }
+    &:hover { background-color: #F5F5F5; }
 }
 
 .Row--selected {
