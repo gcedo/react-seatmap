@@ -24,7 +24,12 @@ export default class Seatmap extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { selectedSeats: Map(), size: 0 };
+        const { rows } = props;
+        this.state = {
+            selectedSeats: Map(),
+            size: 0,
+            width: 35 * (1 + Math.max.apply(null, rows.map(row => row.length)))
+        };
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -50,7 +55,8 @@ export default class Seatmap extends React.Component {
     }
 
     render() {
-        return <div>{ this.renderRows() }</div>;
+        const { width } = this.state;
+        return <div style={{ width }}>{ this.renderRows() }</div>;
     };
 
     renderRows() {
