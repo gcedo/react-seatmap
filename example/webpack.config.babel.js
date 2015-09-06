@@ -11,6 +11,9 @@ export default {
         path: path.resolve(__dirname, '.'),
         filename: 'bundle.js'
     },
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
     module: {
         loaders: [
         {

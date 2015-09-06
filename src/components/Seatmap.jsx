@@ -1,6 +1,6 @@
 import React, { PropTypes as T } from 'react';
 import Row from './Row';
-import Immutable, { Map, Set } from 'immutable';
+import Immutable, { Map, Set } from 'immutable/dist/immutable.min.js';
 import Seat from './Seat';
 import Blank from './Blank';
 

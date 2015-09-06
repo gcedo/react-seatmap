@@ -1,5 +1,6 @@
 import React from 'react';
-import Seatmap from '../build';
+import Seatmap from '../src/components/Seatmap.jsx';
+import style from '../src/style/main.scss';
 
 const rows = [
     [{ number: 'A', isReserved: true }, {number: 'B', isReserved: true}, {number: 'C', isReserved: true}, null, {number: 'D'}, {number: 'E'}, {number: 'F'}],

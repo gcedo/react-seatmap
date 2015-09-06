@@ -5,7 +5,7 @@ export default {
     entry: path.resolve(__dirname, 'src/build.js'),
 
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
         libraryTarget: 'umd',
         library: 'react-seatmap'
@@ -17,7 +17,7 @@ export default {
         loaders: [
         {
             test: /\.jsx?$/,
-            loader: 'babel?stage=0',
+            loader: 'babel?stage=0&loose',
             exclude: /node_modules/
         },
         {
@@ -28,7 +28,7 @@ export default {
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
-      },
+    },
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
             compress: {
