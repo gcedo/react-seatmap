@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build",
+    "css": "node-sass -o . src/style/main.scss  main.css",
+    "umd": "webpack -p --config webpack.build.config.babel --progress",
+    "bare": "rm -rf lib && mkdir lib && babel --loose --stage 0 --out-dir lib src/components",
+    "dev": "webpack-dev-server --config example/webpack.config.babel.js --devtool eval --progress --colors --hot --content-base example",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Edoardo Colombo <edo.gcolombo@gmail.com>",

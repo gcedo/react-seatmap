@@ -1,21 +1,23 @@
 import path from 'path';
+import webpack from 'webpack';
 
 export default {
-    entry: [
-        'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:8080',
-        path.resolve(__dirname, 'src/main.js')
-    ],
+    entry: path.resolve(__dirname, 'src/build.js'),
 
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js'
+        filename: 'index.js',
+        libraryTarget: 'umd',
+        library: 'react-seatmap'
+    },
+    externals: {
+        'react': 'react'
     },
     module: {
         loaders: [
         {
             test: /\.jsx?$/,
-            loaders: ['react-hot', 'babel?stage=0'],
+            loader: 'babel?stage=0',
             exclude: /node_modules/
         },
         {
@@ -23,5 +25,15 @@ export default {
             loader: 'style!css!sass'
         }
         ]
-    }
+    },
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+      },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    ]
 }

@@ -1,8 +1,8 @@
 import React, { PropTypes as T } from 'react';
-import Row from './Row.jsx';
+import Row from './Row';
 import Immutable, { Map, Set } from 'immutable';
-import Seat from './Seat.jsx';
-import Blank from './Blank.jsx';
+import Seat from './Seat';
+import Blank from './Blank';
 
 export default class Seatmap extends React.Component {
 

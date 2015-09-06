@@ -1,5 +1,4 @@
 import React, { PropTypes as T } from 'react';
-import style from '../style/RowNumber.scss';
 
 export default class RowNumber extends React.Component {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Seatmap from './components/Seatmap.jsx';
+import Seatmap from '../build';
 
 const rows = [
     [{ number: 'A', isReserved: true }, {number: 'B', isReserved: true}, {number: 'C', isReserved: true}, null, {number: 'D'}, {number: 'E'}, {number: 'F'}],

@@ -1,5 +1,4 @@
 import React, { PropTypes as T } from 'react';
-import style from '../style/Seat.scss';
 import cx from 'classnames';
 
 export default class Seat extends React.Component {
