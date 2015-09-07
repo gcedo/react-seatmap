@@ -1,6 +1,8 @@
 # react-seatmap
 A React component to display a minimal, yet functional seatmap.
 
+![Demo](demo.gif)
+
 ### Usage
 Two versions are available. The default one can be installed via `npm install react-seatmap` and you will need to attach a stylesheet to see a decent seatmap. You can find a sample one in main.css.
 
