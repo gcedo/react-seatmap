@@ -4,6 +4,7 @@
   "description": "A React component to display a minimal, yet functional seatmap.",
   "main": "index.js",
   "scripts": {
+    "prepublish": "" ,
     "build": "npm run dist && npm run lib && npm run css",
     "css": "node-sass -o . src/style/main.scss  main.css",
     "dist": "webpack -p --progress",

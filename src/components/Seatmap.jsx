@@ -3,11 +3,13 @@ import Row from './Row';
 import Immutable, { Map, Set } from 'immutable/dist/immutable.min.js';
 import Seat from './Seat';
 import Blank from './Blank';
+import RowType from '../model/RowType';
 
 export default class Seatmap extends React.Component {
 
     static propTypes = {
-        rows: T.array,
+        alpha: T.bool,
+        rows: T.arrayOf(RowType).isRequired,
         maxReservableSeats: T.number,
         addSeatCallback: T.func,
         removeSeatCallback: T.func
@@ -61,15 +63,18 @@ export default class Seatmap extends React.Component {
 
     renderRows() {
         const { selectedSeats: seats } = this.state;
+        const { alpha } = this.props;
         return this.props.rows.map((row, index) => {
-            const rowNumber = index.toString();
+            const rowNumber = alpha ?
+                String.fromCharCode('A'.charCodeAt(0) + index) :
+                (index + 1).toString();
             const isSelected = !seats.get(rowNumber, Set()).isEmpty();
             const props = {
                 rowNumber,
                 isSelected,
                 selectedSeat: null,
                 seats: row,
-                key: `Row${index}`,
+                key: `Row${rowNumber}`,
                 selectSeat: this.selectSeat
             };
 

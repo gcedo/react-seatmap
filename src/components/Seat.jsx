@@ -6,7 +6,10 @@ export default class Seat extends React.Component {
     static propTypes = {
         isSelected: T.bool,
         isReserved: T.bool,
-        seatNumber: T.string.isRequired,
+        seatNumber: T.oneOfType([
+            T.string,
+            T.number
+        ]).isRequired,
         selectSeat: T.func.isRequired
     };
 

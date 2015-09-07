@@ -3,14 +3,15 @@ import Seatmap from '../src/components/Seatmap.jsx';
 import style from '../src/style/main.scss';
 
 const rows = [
-    [{ number: 'A', isReserved: true }, {number: 'B', isReserved: true}, {number: 'C', isReserved: true}, null, {number: 'D'}, {number: 'E'}, {number: 'F'}],
-    [{ number: 'A' }, {number: 'B'}, {number: 'C'}, null, {number: 'D'}, {number: 'E'}, {number: 'F'}],
-    [{ number: 'A' }, {number: 'B', isReserved: true}, {number: 'C', isReserved: true}, null, {number: 'D'}, {number: 'E'}, {number: 'F'}],
-    [{ number: 'A' }, {number: 'B'}, {number: 'C'}, null, {number: 'D'}, {number: 'E'}, {number: 'F'}]
+    [{ number: 1, isReserved: true }, {number: 2, isReserved: true}, {number: '3', isReserved: true}, null, {number: '4'}, {number: 5}, {number: 6}],
+    [{ number: 1, isReserved: true }, {number: 2, isReserved: true}, {number: '3', isReserved: true}, null, {number: '4'}, {number: 5}, {number: 6}],
+    [{ number: 1, isReserved: true }, {number: 2, isReserved: true}, {number: '3', isReserved: true}, null, {number: '4'}, {number: 5}, {number: 6}],
+    [{ number: 1, isReserved: true }, {number: 2, isReserved: true}, {number: '3', isReserved: true}, null, {number: '4'}, {number: 5}, {number: 6}],
+    [{ number: 1, isReserved: true }, {number: 2, isReserved: true}, {number: '3', isReserved: true}, null, {number: '4'}, {number: 5}, {number: 6}]
 ];
 
 const rootInstance = React.render(
-    <Seatmap rows={rows} maxReservableSeats={3} />,
+    <Seatmap rows={rows} maxReservableSeats={3} alpha />,
     document.getElementById('app')
 );
 
