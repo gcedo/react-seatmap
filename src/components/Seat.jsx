@@ -22,14 +22,16 @@ export default class Seat extends React.Component {
     }
 
     render() {
-        const { isSelected, isEnabled, isReserved } = this.props;
+        const { isSelected, isEnabled, isReserved, offset } = this.props;
         const className = cx('Seat',
             { 'Seat--selected': isSelected },
             { 'Seat--enabled': !isSelected && isEnabled && !isReserved},
             { 'Seat--reserved': isReserved}
         );
+
+        const style = offset ? { marginBottom: offset } : {};
         return (
-            <div className={className} onClick={this.handleClick}>
+            <div className={className} onClick={this.handleClick} style={style}>
                 <span className="SeatNumber">{this.props.seatNumber}</span>
             </div>
         );

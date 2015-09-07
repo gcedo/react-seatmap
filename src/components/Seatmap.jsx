@@ -3,6 +3,7 @@ import Row from './Row';
 import Immutable, { Map, Set } from 'immutable/dist/immutable.min.js';
 import Seat from './Seat';
 import Blank from './Blank';
+import computeOffsets from '../utilities/parabola';
 
 export default class Seatmap extends React.Component {
 
@@ -17,7 +18,8 @@ export default class Seatmap extends React.Component {
         }))).isRequired,
         maxReservableSeats: T.number,
         addSeatCallback: T.func,
-        removeSeatCallback: T.func
+        removeSeatCallback: T.func,
+        displayFunc: T.func
     };
 
     static defaultProps = {
@@ -26,16 +28,25 @@ export default class Seatmap extends React.Component {
         },
         removeSeatCallback: (row, number) => {
             console.log(`Removed seat ${number}, row ${row}`);
-        }
+        },
+        displayFunc: x => 0
     };
 
     constructor(props) {
         super(props);
         const { rows } = props;
+        const maxLength = Math.max.apply(null, rows.map(row => row.length));
+        let offsets = computeOffsets(maxLength, props.displayFunc);
+        // const delta = Math.max.apply(null, offsets) -  Math.min.apply(null, offsets);
+        // offsets = offsets.map(offset => {
+        //     if (offset - delta > 0) return offset - delta;
+        //     else return offset;
+        // });
         this.state = {
+            offsets,
             selectedSeats: Map(),
             size: 0,
-            width: 35 * (1 + Math.max.apply(null, rows.map(row => row.length)))
+            width: 35 * (1 + maxLength)
         };
     }
 
@@ -92,13 +103,14 @@ export default class Seatmap extends React.Component {
     };
 
     renderSeats(seats, rowNumber, isRowSelected) {
-        const { selectedSeats, size } = this.state;
+        const { selectedSeats, size, offsets } = this.state;
         const { maxReservableSeats } = this.props;
         return seats.map((seat, index) => {
             if (seat === null) return <Blank key={index}/>;
             const isSelected = isRowSelected && selectedSeats.get(rowNumber).includes(seat.number);
             const props = {
                 isSelected,
+                offset: offsets[index],
                 isReserved: seat.isReserved,
                 isEnabled: size < maxReservableSeats,
                 selectSeat: this.selectSeat.bind(this, rowNumber, seat.number),
