@@ -1,3 +1,4 @@
+[![NPM](https://nodei.co/npm/react-seatmap.png?downloads=true&stars=true)](https://nodei.co/npm/react-seatmap/)
 # react-seatmap
 A React component to display a minimal, yet functional seatmap.
 
