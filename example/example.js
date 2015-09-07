@@ -1,5 +1,5 @@
 import React from 'react';
-import Seatmap from '../src/components/Seatmap.jsx';
+import Seatmap from '../lib';
 import style from '../src/style/main.scss';
 
 const rows = [
