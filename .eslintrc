@@ -1,0 +1,25 @@
+{
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+    },
+
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+
+    "rules": {
+        "eqeqeq": 2,
+        "curly": 2,
+        "key-spacing": 0,
+        "quotes": [1, "single"],
+        "no-multi-spaces": 0,
+        "no-underscore-dangle": 0
+    },
+
+    "plugins": [
+        "react"
+    ]
+}
