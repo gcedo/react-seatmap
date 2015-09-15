@@ -7,7 +7,10 @@ import Blank from './Blank';
 export default class Seatmap extends React.Component {
 
     static propTypes = {
+        addSeatCallback: T.func,
         alpha: T.bool,
+        removeSeatCallback: T.func,
+        maxReservableSeats: T.number,
         rows: T.arrayOf(T.arrayOf(T.shape({
             number: T.oneOfType([
                 T.string,
@@ -15,9 +18,7 @@ export default class Seatmap extends React.Component {
             ]).isRequired,
             isReserved: T.bool
         }))).isRequired,
-        maxReservableSeats: T.number,
-        addSeatCallback: T.func,
-        removeSeatCallback: T.func
+        seatWidth: T.number
     };
 
     static defaultProps = {
@@ -26,16 +27,17 @@ export default class Seatmap extends React.Component {
         },
         removeSeatCallback: (row, number) => {
             console.log(`Removed seat ${number}, row ${row}`);
-        }
+        },
+        seatWidth: 35
     };
 
     constructor(props) {
         super(props);
-        const { rows } = props;
+        const { rows, seatWidth } = props;
         this.state = {
             selectedSeats: Map(),
             size: 0,
-            width: 35 * (1 + Math.max.apply(null, rows.map(row => row.length)))
+            width: seatWidth * (1 + Math.max.apply(null, rows.map(row => row.length)))
         };
     }
 
