@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDom from 'react-dom';
 import Seatmap from '../src/components/Seatmap.jsx';
 import style from '../src/style/main.scss';
 
@@ -10,7 +11,7 @@ const rows = [
     [{ number: 1, isReserved: true }, {number: 2}, {number: '3', isReserved: true}, null, {number: '4'}, {number: 5}, {number: 6, isReserved: true}]
 ];
 
-const rootInstance = React.render(
+const rootInstance = ReactDom.render(
     <Seatmap rows={rows} maxReservableSeats={3} alpha />,
     document.getElementById('app')
 );

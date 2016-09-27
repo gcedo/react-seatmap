@@ -18,7 +18,7 @@ export default {
         loaders: [
         {
             test: /\.jsx?$/,
-            loaders: ['react-hot', 'babel?stage=0'],
+            loaders: ['babel'],
             exclude: /node_modules/
         },
         {
