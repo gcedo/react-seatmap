@@ -3,7 +3,13 @@ import cx from "classnames";
 import PropTypes from "prop-types";
 
 class Seat extends Component {
+  constructor(props){
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  } 
+
   handleClick() {
+    console.log(this.props)
     !this.props.isReserved && this.props.selectSeat();
   }
 
