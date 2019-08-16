@@ -1,36 +1,12 @@
-import React, { PropTypes as T } from 'react';
+import React, { Component } from 'react';
 import Row from './Row';
 import Immutable, { Map, Set } from 'immutable/dist/immutable.min.js';
 import Seat from './Seat';
 import Blank from './Blank';
+import PropTypes from 'prop-types';
 
-export default class Seatmap extends React.Component {
 
-    static propTypes = {
-        addSeatCallback: T.func,
-        alpha: T.bool,
-        removeSeatCallback: T.func,
-        maxReservableSeats: T.number,
-        rows: T.arrayOf(T.arrayOf(T.shape({
-            number: T.oneOfType([
-                T.string,
-                T.number
-            ]).isRequired,
-            isReserved: T.bool
-        }))).isRequired,
-        seatWidth: T.number
-    };
-
-    static defaultProps = {
-        addSeatCallback: (row, number) => {
-            console.log(`Added seat ${number}, row ${row}`);
-        },
-        removeSeatCallback: (row, number) => {
-            console.log(`Removed seat ${number}, row ${row}`);
-        },
-        seatWidth: 35
-    };
-
+class Seatmap extends Component {
     constructor(props) {
         super(props);
         const { rows, seatWidth } = props;
@@ -45,7 +21,7 @@ export default class Seatmap extends React.Component {
         return nextState.selectedSeats !== this.state.selectedSeats;
     }
 
-    selectSeat = (row, number) => {
+    selectSeat (row, number) {
         const { selectedSeats, size } = this.state;
         const { maxReservableSeats, addSeatCallback, removeSeatCallback } = this.props;
         const seatAlreadySelected = selectedSeats.get(row, Set()).includes(number);
@@ -63,10 +39,16 @@ export default class Seatmap extends React.Component {
         }
     }
 
+    
+
     render() {
         const { width } = this.state;
-        return <div style={{ width }}>{ this.renderRows() }</div>;
-    };
+        return (
+	  <div style={{ width: width }}>
+	    { this.renderRows() }
+	  </div>
+	);
+    }
 
     renderRows() {
         const { selectedSeats: seats } = this.state;
@@ -111,3 +93,30 @@ export default class Seatmap extends React.Component {
         });
     }
 }
+
+Seatmap.defaultProps = {
+        addSeatCallback: (row, number) => {
+            console.log(`Added seat ${number}, row ${row}`);
+        },
+        removeSeatCallback: (row, number) => {
+            console.log(`Removed seat ${number}, row ${row}`);
+        },
+        seatWidth: 35
+    };
+
+Seatmap.propTypes = {
+        addSeatCallback: PropTypes.func,
+        alpha: PropTypes.bool,
+        removeSeatCallback: PropTypes.func,
+        maxReservableSeats: PropTypes.number,
+        rows: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({
+            number: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.number
+            ]).isRequired,
+            isReserved: PropTypes.bool
+        }))).isRequired,
+        seatWidth: PropTypes.number
+    };
+
+export  default Seatmap;
