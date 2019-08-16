@@ -9,7 +9,7 @@
     "css": "node-sass -o . src/style/main.scss  main.css",
     "dist": "rm -rf dist && mkdir dist && webpack -p --progress",
     "lib": "babel --loose --stage 0 --out-dir lib src/components",
-    "dev": "webpack-dev-server --config example/webpack.config.babel.js --devtool eval --progress --colors --hot --content-base example",
+    "dev": "webpack-dev-server --config example/webpack.config.js --devtool eval --progress --colors --hot --content-base example",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Edoardo Colombo <edo.gcolombo@gmail.com>",
@@ -30,7 +30,8 @@
     "immutable": "^3.7.5",
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0"
+    "react": "^16.9.0",
+    "react-hot-loader": "^4.12.11"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -40,7 +41,6 @@
     "babel-loader": "^8.0.6",
     "css-loader": "^0.17.0",
     "node-sass": "^4.12.0",
-    "react-hot-loader": "^1.3.0",
     "sass-loader": "^7.2.0",
     "style-loader": "^0.12.4",
     "uglifyjs-webpack-plugin": "^2.2.0",
