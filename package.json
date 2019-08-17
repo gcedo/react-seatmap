@@ -10,7 +10,7 @@
     "dist": "rm -rf dist && mkdir dist && webpack -p --progress",
     "lib": "babel --loose --stage 0 --out-dir lib src/components",
     "dev": "webpack-dev-server --config example/webpack.config.js --devtool eval --progress --colors --hot --content-base example",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Edoardo Colombo <edo.gcolombo@gmail.com>",
   "license": "MIT",
@@ -37,10 +37,14 @@
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^0.17.0",
+    "jest": "^24.9.0",
     "node-sass": "^4.12.0",
+    "react-test-renderer": "^16.9.0",
     "sass-loader": "^7.2.0",
     "style-loader": "^0.12.4",
     "uglifyjs-webpack-plugin": "^2.2.0",
