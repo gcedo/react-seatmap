@@ -44,7 +44,7 @@ class Seatmap extends Component {
     render() {
         const { width } = this.state;
         return (
-	  <div style={{ width: width }}>
+	  <div style={{ width: width }} className="seatmap_container">
 	    { this.renderRows() }
 	  </div>
 	);
