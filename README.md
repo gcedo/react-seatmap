@@ -10,6 +10,15 @@ Two versions are available. The default one can be installed via `npm install re
 ```javascript
 import React from 'react';
 import Seatmap from 'react-seatmap';
+
+const rows = [
+    [{ number: 1 }, {number: 2}, {number: '3', isReserved: true}, null, {number: '4'}, {number: 5}, {number: 6}],
+    [{ number: 1, isReserved: true }, {number: 2, isReserved: true}, {number: '3', isReserved: true}, null, {number: '4'}, {number: 5}, {number: 6}],
+    [{ number: 1 }, {number: 2}, {number: 3, isReserved: true}, null, {number: '4'}, {number: 5}, {number: 6}],
+    [{ number: 1 }, {number: 2}, {number: 3}, null, {number: '4'}, {number: 5}, {number: 6}],
+    [{ number: 1, isReserved: true }, {number: 2}, {number: '3', isReserved: true}, null, {number: '4'}, {number: 5}, {number: 6, isReserved: true}]
+];
+
 React.render(
     <Seatmap rows={rows} maxReservableSeats={3} alpha />,
     document.getElementById('app')
